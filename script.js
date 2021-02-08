@@ -1,55 +1,32 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+var mainEl =document.getElementById("main");
+
+var ucase ="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+var special ="!@#$%^&*()"
+var lcase ="abcdefghijklmnopqrstuvwxyz"
+var number =1234567890
+
+var useUpper = true;
+var useLower = true;
+var useSpecial = true;
+var useNumber = true;
 
 // Write password to the #password input
-const randomFunc = {
-  lower: writePassword
-}
 function writePassword() {
-  var password = generatePassword();
+  var password = ("password");
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 
 }
-function writePassword(lower, upper, number, symbol, length) {
-	let generatedPassword = '';
-	const typesCount = lower + upper + number + symbol;
-	const typesArr = [{lower}, {upper}, {number}, {symbol}].filter(item => Object.values(item)[0]);
-	
-	// Doesn't have a selected type
-	if(typesCount === 0) {
-		return '';
-	}
-	
-	// create a loop
-	for(let i=0; i<length; i+=typesCount) {
-		typesArr.forEach(type => {
-			const funcName = Object.keys(type)[0];
-			generatedPassword += randomFunc[funcName]();
-		});
-	}
-	
-	const finalPassword = generatedPassword.slice(0, length);
-	
-	return finalPassword;
-}
+function RandomPassword(){
+	var ucase = generatePassword();
+	var lcase = generatePassword();
+	var special = generatePassword();
+	var number = generatePassword();
 
-function writePassword() {
-	return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-}
-
-function getRandomUpper() {
-	return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
-}
-
-function getRandomNumber() {
-	return +String.fromCharCode(Math.floor(Math.random() * 10) + 48);
-}
-
-function getRandomSymbol() {
-	const symbols = '!@#$%^&*(){}[]=<>/,.'
-	return symbols[Math.floor(Math.random() * symbols.length)];
+	var passwordText = document.querySelector("#password");
 }
 
 // Add event listener to generate button
